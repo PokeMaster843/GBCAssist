@@ -1,0 +1,78 @@
+var pkmn1 = 0xDA2A, inc = 0x30;
+var normalMem = [[],[],[],[],[],[],
+					// pokemon 7 (DB4A-DB79)
+					["First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT", "First Pokemon Name OT",
+					 "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT", "Second Pokemon Name OT",
+					 "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT", "Third Pokemon Name OT",
+					 "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT", "Fourth Pokemon Name OT",
+					 "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT"],
+					 // pokemon 8 (DB7A-DBA9)
+					 ["Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT", "Fifth Pokemon Name OT",
+					  "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT", "Sixth Pokemon Name OT",
+					  "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name", "First Pokemon Name",
+					  "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name", "Second Pokemon Name",
+					  "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name"],
+					 // pokemon 9 (DBAA-DBD9)
+					 ["Third Pokemon Name", "Third Pokemon Name", "Third Pokemon Name",
+					  "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name", "Fourth Pokemon Name",
+					  "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name", "Fifth Pokemon Name",
+					  "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name", "Sixth Pokemon Name",
+					  "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?"],
+					 // pokemon 10 (DBDA-DC09)
+					 ["DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?", "DBCE-DBE3?",
+					  "DBCE-DBE3?", "DBCE-DBE3?", "Seen 1-8", "Seen 9-16", "Seen 17-24", "Seen 25-32", "Seen 33-40", "Seen 41-48",
+					  "Seen 49-56", "Seen 57-64", "Seen 65-72", "Seen 73-80", "Seen 81-88", "Seen 89-96", "Seen 97-104", "Seen 105-112",
+					  "Seen 113-120", "Seen 121-128", "Seen 129-136", "Seen 137-144", "Seen 145-152", "Seen 153-160", "Seen 161-168", "Seen 169-176",
+					  "Seen 177-184", "Seen 185-192", "Seen 193-200", "Seen 201-208", "Seen 209-216", "Seen 217-224", "Seen 225-232", "Seen 233-240",
+					  "Seen 249-256", "Own 1-8", "Own 9-16", "Own 17-24", "Own 25-32", "Own 33-40", "Own 41-48", "Own 49-56"],
+					 // pokemon 11 (DC0A-DC39)
+					 ["Own 49-56", "Own 57-64", "Own 65-72", "Own 73-80", "Own 81-88", "Own 89-96", "Own 97-104", "Own 105-112",
+					  "Own 113-120", "Own 121-128", "Own 129-136", "Own 137-144", "Own 145-152", "Own 153-160", "Own 161-168", "Own 169-176",
+					  "Own 177-184", "Own 185-192", "Own 193-200", "Own 201-208", "Own 209-216", "Own 217-224", "Own 225-232", "Own 233-240",
+					  "Own 241-248", "Own 249-256", "Unowndex 1", "Unowndex 2", "Unowndex 3", "Unowndex 4", "Unowndex 5", "Unowndex 6",
+					  "Unowndex 7", "Unowndex 8", "Unowndex 9", "Unowndex 10", "Unowndex 11", "Unowndex 12", "Unowndex 13", "Unowndex 14",
+					  "Unowndex 15", "Unowndex 16", "Unowndex 17", "Unowndex 18", "Unowndex 19", "Unowndex 20", "Unowndex 21", "Unowndex 22"],
+					 // pokemon 12 (DC3A-DC69)
+					 ["Unowndex 23", "Unowndex 24", "Unowndex 25", "Unowndex 26", "???", "Unown that appears in Pokedex entry", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?"],
+					 // pokemon 13 (DC6A-DC99)
+					 ["DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?"],
+					 // pokemon 14 (DC9A-DCC9)
+					 ["DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?"],
+					 // pokemon 15 (DCCA-DCF9)
+					 ["DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?"],
+					 // pokemon 16 (DCFA-DD29)
+					 ["DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?"],
+					 // pokemon 17 (DD2A-DD59)
+					 ["DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "DC40-DD54?",
+					  "DC40-DD54?", "DC40-DD54?", "DC40-DD54?", "number of opponent's pokemon", "species of 1st pokemon", "species of 2nd pokemon", "species of 3rd pokemon", "species of 4th pokemon"],
+					 // pokemon 18 (DD5A-DD89)
+					 []];
